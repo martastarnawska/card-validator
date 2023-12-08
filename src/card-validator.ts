@@ -1,11 +1,18 @@
+const MESSAGES = {
+  OK: "valid card number",
+  NOT_NUMBER: "please enter only digits",
+  INVALID: "invalid card number"
+}
+
 const isNumber = (inputString: string): boolean => /^\d+$/.test(inputString)
 
-const checkIsValid = (cardNumber: string) => {
+type Validation = [boolean, string]
+
+const checkIsValid = (cardNumber: string): Validation => {
   const chekIfItsNumber = isNumber(cardNumber)
 
   if (!chekIfItsNumber) {
-    console.log("not a number!")
-    return false
+    return  [false, MESSAGES.NOT_NUMBER]
   }
 
   const cardNumArray: (string | number)[] = Array.from(cardNumber)
@@ -25,10 +32,10 @@ const checkIsValid = (cardNumber: string) => {
     }, 0)
 
   if (digitsSum % 10 === 0) {
-    return true
+    return  [true, MESSAGES.OK]
   }
-
-  return  false
+  
+  return [false, MESSAGES.INVALID]
 }
 
 export default checkIsValid

@@ -5,10 +5,12 @@ import './App.css';
 function App() {
   const [inputValue, setInputValue] = useState("")
   const [isCardNumValid, setIsCardNumValid] = useState(false)
+  const [validationMessage, setValidationMessage] = useState("")
 
   const handleValidation = (inputValue: string) => {
-    const valid = checkIsValid(inputValue)
+    const [valid, message] = checkIsValid(inputValue)
     setIsCardNumValid(valid)
+    setValidationMessage(message)
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>)  => {
@@ -31,7 +33,9 @@ function App() {
           onChange={handleInputChange}
         >
         </input>
-        <p>{isCardNumValid ? "valid" : "invalid"}</p>
+        <p className={isCardNumValid ? "App__message" : "App__message--invalid"}>
+          {validationMessage}
+        </p>
       </header>
     </div>
   );
