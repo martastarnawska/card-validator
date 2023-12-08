@@ -13,3 +13,8 @@
   color: white;
 }
 
+.App__message--invalid {
+  color: red;
+}
+
+
