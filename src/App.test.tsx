@@ -1,9 +1,13 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import checkIsValid from './card-validator';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('validates card number correctly', () => {
+  const isCardNumberValid = checkIsValid("5555555555554444")
+
+  expect(isCardNumberValid).toBeTruthy()
+})
+
+test('validates proper card number correctly', () => {
+  const isCardNumberValid = checkIsValid("5555555555554447")
+
+  expect(isCardNumberValid).toBeFalsy()
+})
