@@ -1,23 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, ChangeEvent } from 'react';
+import checkIsValid from './card-validator'
 import './App.css';
 
 function App() {
+  const [inputValue, setInputValue] = useState("")
+  const [isCardNumValid, setIsCardNumValid] = useState(false)
+
+  const handleValidation = (inputValue: string) => {
+    const valid = checkIsValid(inputValue)
+    setIsCardNumValid(valid)
+  }
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>)  => {
+    setInputValue(event.target.value)
+    handleValidation(event.target.value)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <h1>Welcome</h1>
+        <h2>Enter Card Number</h2>
+        <input
+          type="text"
+          pattern="[0-9\s]{13,19}"
+          inputMode='numeric'
+          aria-label=''
+          placeholder="xxxx xxxx xxxx xxxx"
+          value={inputValue}
+          onChange={handleInputChange}
         >
-          Learn React
-        </a>
+        </input>
+        <p>{isCardNumValid ? "valid" : "invalid"}</p>
       </header>
     </div>
   );
