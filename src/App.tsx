@@ -3,17 +3,17 @@ import checkIsValid from './card-validator'
 import './App.css';
 
 function App() {
-  const [inputValue, setInputValue] = useState("")
-  const [isCardNumValid, setIsCardNumValid] = useState(false)
-  const [validationMessage, setValidationMessage] = useState("")
+  const [inputValue, setInputValue] = useState<string>("")
+  const [isCardNumValid, setIsCardNumValid] = useState<boolean>(false)
+  const [validationMessage, setValidationMessage] = useState<string>("")
 
-  const handleValidation = (inputValue: string) => {
+  const handleValidation = (inputValue: string): void => {
     const [valid, message] = checkIsValid(inputValue)
     setIsCardNumValid(valid)
     setValidationMessage(message)
   }
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>)  => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void  => {
     setInputValue(event.target.value)
     handleValidation(event.target.value)
   }
@@ -27,13 +27,13 @@ function App() {
           type="text"
           pattern="[0-9\s]{13,19}"
           inputMode='numeric'
-          aria-label=''
+          aria-label='card number'
           placeholder="xxxx xxxx xxxx xxxx"
           value={inputValue}
           onChange={handleInputChange}
         >
-        </input>
-        <p className={isCardNumValid ? "App__message" : "App__message--invalid"}>
+      </input>
+        <p className={isCardNumValid ? "App__message" : "App__message App__message--invalid"}>
           {validationMessage}
         </p>
       </header>

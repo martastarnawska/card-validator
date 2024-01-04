@@ -1,4 +1,4 @@
-const MESSAGES = {
+export const MESSAGES = {
   OK: "valid card number",
   NOT_NUMBER: "please enter only digits",
   INVALID: "invalid card number"
@@ -15,10 +15,12 @@ const checkIsValid = (cardNumber: string): Validation => {
     return  [false, MESSAGES.NOT_NUMBER]
   }
 
-  const cardNumArray: (string | number)[] = Array.from(cardNumber)
-  const digitsArray = cardNumArray.map(digit => Number(digit))
+  // TODO: drop number type, beacuse cardNumber is a string
+  const cardNumArray: string[] = Array.from(cardNumber)
+  const digitsArray: number[] = cardNumArray.map(digit => Number(digit))
 
-  const digitsSum = (digitsArray as number[]).reduce(
+  // TODO: can drop `as number` now
+  const digitsSum: number = digitsArray.reduce(
     (acc:number, curr:number, index: number) => {
       let value = curr
       if (index % 2 === 0) {
