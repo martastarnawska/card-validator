@@ -15,11 +15,9 @@ const checkIsValid = (cardNumber: string): Validation => {
     return  [false, MESSAGES.NOT_NUMBER]
   }
 
-  // TODO: drop number type, beacuse cardNumber is a string
   const cardNumArray: string[] = Array.from(cardNumber)
   const digitsArray: number[] = cardNumArray.map(digit => Number(digit))
 
-  // TODO: can drop `as number` now
   const digitsSum: number = digitsArray.reduce(
     (acc:number, curr:number, index: number) => {
       let value = curr
