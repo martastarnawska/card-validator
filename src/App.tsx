@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import checkIsValid from './card-validator'
-import './App.css';
+import './App.scss';
 
 function App() {
   const [inputValue, setInputValue] = useState<string>("")
