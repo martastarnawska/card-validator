@@ -1,7 +1,8 @@
 export const MESSAGES = {
   OK: "valid card number",
   NOT_NUMBER: "please enter only digits",
-  INVALID: "invalid card number"
+  INVALID: "invalid card number",
+  EMPTY: "this field is required"
 }
 
 const isNumber = (inputString: string): boolean => /^\d+$/.test(inputString)
@@ -10,6 +11,11 @@ type Validation = [boolean, string]
 
 const checkIsValid = (cardNumber: string): Validation => {
   const chekIfItsNumber = isNumber(cardNumber)
+
+  // eslint-disable-next-line eqeqeq
+  if (cardNumber == '') {
+    return [false, MESSAGES.EMPTY]
+  }
 
   if (!chekIfItsNumber) {
     return  [false, MESSAGES.NOT_NUMBER]
