@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from 'react';
 import checkIsValid from './card-validator'
 import debounce from './debounce'
 import './App.scss';
+import './reset.scss'
 
 function App() {
   const [inputValue, setInputValue] = useState<string>("")
