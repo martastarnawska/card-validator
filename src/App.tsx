@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import checkIsValid from './card-validator'
+import debounce from './debounce'
 import './App.scss';
 
 function App() {
@@ -14,8 +15,10 @@ function App() {
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void  => {
+    const handleDebouncedValidation = debounce(handleValidation)
+
     setInputValue(event.target.value)
-    handleValidation(event.target.value)
+    handleDebouncedValidation(event.target.value)
   }
 
   return (
