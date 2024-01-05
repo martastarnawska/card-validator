@@ -21,21 +21,24 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome</h1>
-        <h2>Enter Card Number</h2>
-        <input
-          type="text"
-          pattern="[0-9\s]{13,19}"
-          inputMode='numeric'
-          aria-label='card number'
-          placeholder="xxxx xxxx xxxx xxxx"
-          value={inputValue}
-          onChange={handleInputChange}
-        >
-      </input>
-        <p className={isCardNumValid ? "App__message" : "App__message App__message--invalid"}>
-          {validationMessage}
-        </p>
+        <form className="App__form">
+          <label htmlFor="card_number">Card number</label>
+          <input
+            type="text"
+            pattern="[0-9\s]{13,19}"
+            inputMode='numeric'
+            aria-label='card number'
+            placeholder="0000 0000 0000 0000"
+            value={inputValue}
+            onChange={handleInputChange}
+            className='App__input'
+            id="card_number"
+          >
+          </input>
+          <p className={isCardNumValid ? "App__message" : "App__message App__message--invalid"}>
+            {validationMessage}
+          </p>
+        </form>
       </header>
     </div>
   );
