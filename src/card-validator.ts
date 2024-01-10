@@ -1,11 +1,13 @@
 export const MESSAGES = {
-  OK: "valid card number",
+  OK: "",
   NOT_NUMBER: "please enter only digits",
+  ONLY_LETTERS: "this field can contain only letters",
   INVALID: "invalid card number",
   EMPTY: "this field is required"
 }
 
 const isNumber = (inputString: string): boolean => /^\d+$/.test(inputString)
+const containsOnlyLetters = (inputString: string): boolean => /^[a-zA-Z]*$/g.test(inputString)
 
 type Validation = [boolean, string]
 
@@ -42,6 +44,17 @@ const checkIsCartNumberValid = (cardNumber: string): Validation => {
   }
   
   return [false, MESSAGES.INVALID]
+}
+
+export const checkIsNameValid = (name: string): Validation => {
+
+  const checkIfHasOnlyLetters = containsOnlyLetters(name)
+
+  if (checkIfHasOnlyLetters) {
+    return [true, MESSAGES.OK]
+  }
+
+  return [false, MESSAGES.ONLY_LETTERS]
 }
 
 export default checkIsCartNumberValid
