@@ -9,7 +9,7 @@ const isNumber = (inputString: string): boolean => /^\d+$/.test(inputString)
 
 type Validation = [boolean, string]
 
-const checkIsValid = (cardNumber: string): Validation => {
+const checkIsCartNumberValid = (cardNumber: string): Validation => {
   const chekIfItsNumber = isNumber(cardNumber)
 
   // eslint-disable-next-line eqeqeq
@@ -44,4 +44,4 @@ const checkIsValid = (cardNumber: string): Validation => {
   return [false, MESSAGES.INVALID]
 }
 
-export default checkIsValid
+export default checkIsCartNumberValid

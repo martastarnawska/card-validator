@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react';
-import checkIsValid from './card-validator'
+import checkIsCartNumberValid from './card-validator'
 import debounce from './debounce'
 
 const CardNumberInput = () => {
@@ -8,7 +8,7 @@ const CardNumberInput = () => {
   const [validationMessage, setValidationMessage] = useState<string>("")
 
   const handleValidation = (inputValue: string): void => {
-    const [valid, message] = checkIsValid(inputValue)
+    const [valid, message] = checkIsCartNumberValid(inputValue)
     setIsCardNumValid(valid)
     setValidationMessage(message)
   }
