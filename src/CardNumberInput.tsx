@@ -1,6 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import checkIsCartNumberValid from './card-validator'
 import debounce from './debounce'
+import ErrorMessage from './ErrorMessage';
 
 const CardNumberInput = () => {
   const [inputValue, setInputValue] = useState<string>("")
@@ -35,9 +36,10 @@ const CardNumberInput = () => {
         id="card_number"
       >
       </input>
-      <p className={isCardNumValid ? "Input__message" : "Input__message Input__message--invalid"}>
-        {validationMessage}
-      </p>
+      <ErrorMessage
+        isValid={isCardNumValid}
+        validationMessage={validationMessage}
+      />
   </div>
   )
  

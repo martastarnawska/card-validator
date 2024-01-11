@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react"
+import ErrorMessage from "./ErrorMessage"
 import { checkIsNameValid } from './card-validator'
 import debounce from "./debounce"
 
@@ -35,9 +36,10 @@ const CardholderNameInput = () => {
         className='Input'
       >
       </input>
-      <p className={isNameValid ? "Input__message" : "Input__message Input__message--invalid"}>
-        {validationMessage}
-      </p>
+      <ErrorMessage
+        isValid={isNameValid}
+        validationMessage={validationMessage}
+      />
     </div>
   )
 
