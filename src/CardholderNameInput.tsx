@@ -21,7 +21,7 @@ const CardholderNameInput = () => {
   }
 
   return (
-    <>
+    <div className="Field">
       <label htmlFor="cardholder_name">
         Cardholder Name
       </label>
@@ -38,7 +38,7 @@ const CardholderNameInput = () => {
       <p className={isNameValid ? "Input__message" : "Input__message Input__message--invalid"}>
         {validationMessage}
       </p>
-    </>
+    </div>
   )
 
 }

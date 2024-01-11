@@ -21,7 +21,7 @@ const CardNumberInput = () => {
   }
 
   return (
-    <>
+    <div className="Field">
       <label htmlFor="card_number">Card number</label>
       <input
         type="text"
@@ -38,7 +38,7 @@ const CardNumberInput = () => {
       <p className={isCardNumValid ? "Input__message" : "Input__message Input__message--invalid"}>
         {validationMessage}
       </p>
-  </>
+  </div>
   )
  
 }
