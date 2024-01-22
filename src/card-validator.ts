@@ -7,7 +7,7 @@ export const MESSAGES = {
 }
 
 const isNumber = (inputString: string): boolean => /^\d+$/.test(inputString)
-const containsOnlyLetters = (inputString: string): boolean => /^[a-zA-Z]*$/g.test(inputString)
+const containsOnlyLettersAndSpaces = (inputString: string): boolean => /^[a-zA-Z\s]*$/g.test(inputString)
 
 type Validation = [boolean, string]
 
@@ -47,8 +47,7 @@ const checkIsCartNumberValid = (cardNumber: string): Validation => {
 }
 
 export const checkIsNameValid = (name: string): Validation => {
-
-  const checkIfHasOnlyLetters = containsOnlyLetters(name)
+  const checkIfHasOnlyLetters = containsOnlyLettersAndSpaces(name)
 
   if (checkIfHasOnlyLetters) {
     return [true, MESSAGES.OK]
