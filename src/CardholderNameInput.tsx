@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react"
 import ErrorMessage from "./ErrorMessage"
 import { checkIsNameValid } from './card-validator'
 import debounce from "./debounce"
+import Field from "./Field"
 
 const CardholderNameInput = () => {
   const [inputValue, setInputValue] = useState<string>("")
@@ -22,25 +23,19 @@ const CardholderNameInput = () => {
   }
 
   return (
-    <div className="Field">
-      <label htmlFor="cardholder_name">
-        Cardholder Name
-      </label>
-      <input
-        type="text"
-        id="cardholder_name"
-        aria-label='cardholder name'
-        placeholder="John Smith"
-        value={inputValue}
-        onChange={handleInputChange}
-        className='Input'
-      >
-      </input>
+    <Field
+      id="cardholder_name"
+      aria-label='cardholder name'
+      placeholder="John Smith"
+      inputValue={inputValue}
+      handleInputChange={handleInputChange}
+      labelText="Cardholder Name"
+    >
       <ErrorMessage
         isValid={isNameValid}
         validationMessage={validationMessage}
       />
-    </div>
+    </Field>
   )
 
 }

@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from 'react';
 import checkIsCartNumberValid from './card-validator'
 import debounce from './debounce'
 import ErrorMessage from './ErrorMessage';
+import Field from './Field';
 
 const CardNumberInput = () => {
   const [inputValue, setInputValue] = useState<string>("")
@@ -22,25 +23,21 @@ const CardNumberInput = () => {
   }
 
   return (
-    <div className="Field">
-      <label htmlFor="card_number">Card number</label>
-      <input
-        type="text"
-        pattern="[0-9\s]{13,19}"
-        inputMode='numeric'
-        aria-label='card number'
-        placeholder="0000 0000 0000 0000"
-        value={inputValue}
-        onChange={handleInputChange}
-        className='Input'
-        id="card_number"
-      >
-      </input>
+    <Field
+      id="card_number"
+      pattern="[0-9\s]{13,19}"
+      aria-label='card number'
+      placeholder="0000 0000 0000 0000"
+      inputValue={inputValue}
+      handleInputChange={handleInputChange}
+      labelText="Card number"
+      inputMode="numeric"
+    >
       <ErrorMessage
         isValid={isCardNumValid}
         validationMessage={validationMessage}
       />
-  </div>
+    </Field>
   )
  
 }
