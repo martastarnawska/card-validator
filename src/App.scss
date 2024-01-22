@@ -19,6 +19,7 @@
 }
 
 .Input {
+  width: 200px;
   border-radius: 10px;
   color: gray;
   border-color: silver;
@@ -26,6 +27,7 @@
   margin: 5px;
 
   &__message {
+    height: 20px;
     font-size: 14px;
   
     &--invalid {
