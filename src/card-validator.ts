@@ -48,7 +48,11 @@ const checkIsCartNumberValid = (cardNumber: string): Validation => {
 
 export const checkIsNameValid = (name: string): Validation => {
   const checkIfHasOnlyLetters = containsOnlyLettersAndSpaces(name)
-
+  
+  // eslint-disable-next-line eqeqeq
+  if (name == '') {
+    return [false, MESSAGES.EMPTY]
+  }
   if (checkIfHasOnlyLetters) {
     return [true, MESSAGES.OK]
   }
