@@ -35,3 +35,14 @@
     }
   }
 }
+
+.Select {
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin: 10px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}

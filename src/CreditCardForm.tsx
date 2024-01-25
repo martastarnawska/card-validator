@@ -1,5 +1,6 @@
 import CardNumberInput from "./CardNumberInput"
 import CardholderNameInput from "./CardholderNameInput"
+import ExpirationDate from "./ExpirationDate"
 
 const CreditCardForm = () => {
 
@@ -7,6 +8,7 @@ const CreditCardForm = () => {
     <form className="Form">
       <CardholderNameInput />
       <CardNumberInput />
+      <ExpirationDate />
     </form>
   )
 }
