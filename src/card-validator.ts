@@ -3,11 +3,13 @@ export const MESSAGES = {
   NOT_NUMBER: "please enter only digits",
   ONLY_LETTERS: "this field can contain only letters",
   INVALID: "invalid card number",
-  EMPTY: "this field is required"
+  CVV_INVALID: "please provide 3 or 4 digits",
+  EMPTY: "this field is required",
 }
 
 const isNumber = (inputString: string): boolean => /^\d+$/.test(inputString)
 const containsOnlyLettersAndSpaces = (inputString: string): boolean => /^[a-zA-Z\s]*$/g.test(inputString)
+const containsThreeOrFourDigits = (insputString: string): boolean =>  /\b\d{3,4}\b/.test(insputString)
 
 type Validation = [boolean, string]
 
@@ -58,6 +60,21 @@ export const checkIsNameValid = (name: string): Validation => {
   }
 
   return [false, MESSAGES.ONLY_LETTERS]
+}
+
+export const isCVVCodeValid = (code: string): Validation => {
+  // eslint-disable-next-line eqeqeq
+  if (code == '') {
+    return [false, MESSAGES.EMPTY]
+  }
+  
+  console.log(code)
+  console.log(containsThreeOrFourDigits(code))
+  if (containsThreeOrFourDigits(code)) {
+    return [true, MESSAGES.OK]
+  }
+
+  return [false, MESSAGES.CVV_INVALID]
 }
 
 export default checkIsCartNumberValid

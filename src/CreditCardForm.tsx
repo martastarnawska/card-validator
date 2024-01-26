@@ -1,3 +1,4 @@
+import CVVCode from "./CVVCodeInput"
 import CardNumberInput from "./CardNumberInput"
 import CardholderNameInput from "./CardholderNameInput"
 import ExpirationDate from "./ExpirationDate"
@@ -9,6 +10,7 @@ const CreditCardForm = () => {
       <CardholderNameInput />
       <CardNumberInput />
       <ExpirationDate />
+      <CVVCode />
     </form>
   )
 }
