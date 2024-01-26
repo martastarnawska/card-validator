@@ -6,7 +6,7 @@ import Field from './Field';
 
 const CardNumberInput = () => {
   const [inputValue, setInputValue] = useState<string>("")
-  const [isCardNumValid, setIsCardNumValid] = useState<boolean>(false)
+  const [isCardNumValid, setIsCardNumValid] = useState<boolean>(true)
   const [validationMessage, setValidationMessage] = useState<string>("")
 
   const handleValidation = (inputValue: string): void => {
@@ -39,7 +39,6 @@ const CardNumberInput = () => {
       />
     </Field>
   )
- 
 }
 
 export default CardNumberInput
