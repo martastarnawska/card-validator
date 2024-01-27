@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from "react";
 import ErrorMessage from "./ErrorMessage";
 import { months } from "./card-validator"
 import { handleDateValidation } from "./card-validator";
+import Select from "./Select";
 
 const createArrayOfYears = () => {
   const min = new Date().getFullYear()
@@ -44,34 +45,16 @@ const ExpirationDate = () => {
     <div>
       <fieldset className="Select__wrapper">
         <legend className="Select__legend">Expire Date</legend>
-        <select
-          className="Select"
-          value={selectedMonth}
-          onChange={handleMonthChange}
-        >
-          {months.map(month => 
-            <option
-              key={month}
-              value={month}
-            >
-              {month}
-            </option>
-          )}
-        </select>
-        <select
-          className="Select"
-          onChange={handleYearChange}
-          value={selectedYear}
-        >
-          {years.map(year => (
-            <option
-              key={year}
-              value={year}
-          >
-            {year}
-          </option>
-          ))}
-        </select>     
+        <Select
+          selectedValue={selectedMonth}
+          handleChange={handleMonthChange}
+          itemsArray={months}
+        />
+        <Select
+          selectedValue={selectedYear}
+          handleChange={handleYearChange}
+          itemsArray={years}        
+        />
       </fieldset>
       <ErrorMessage
         isValid={isValid}
