@@ -4,6 +4,7 @@ export const MESSAGES = {
   ONLY_LETTERS: "this field can contain only letters",
   INVALID: "invalid card number",
   CVV_INVALID: "please provide 3 or 4 digits",
+  PAST_EXPIRE_DATE: "please select date in the future",
   EMPTY: "this field is required",
 }
 
@@ -75,6 +76,20 @@ export const isCVVCodeValid = (code: string): Validation => {
   }
 
   return [false, MESSAGES.CVV_INVALID]
+}
+
+export const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+
+export const handleDateValidation = (month: string, year: number): Validation => {
+  const currentDate = new Date() 
+  const currentMonth = currentDate.getMonth()
+  const currentYear = currentDate.getFullYear()
+
+  if (currentYear === year && currentMonth > months.indexOf(month)) {
+    return [false, MESSAGES.PAST_EXPIRE_DATE]
+  } 
+
+  return [false, MESSAGES.OK]
 }
 
 export default checkIsCartNumberValid

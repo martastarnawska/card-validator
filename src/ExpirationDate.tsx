@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react";
 import ErrorMessage from "./ErrorMessage";
-
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+import { months } from "./card-validator"
+import { handleDateValidation } from "./card-validator";
 
 const createArrayOfYears = () => {
   const min = new Date().getFullYear()
@@ -23,28 +23,21 @@ const ExpirationDate = () => {
   const [isValid, setIsValid] = useState<boolean>(true)
   const [validationMessage, setValidationMessage] = useState<string>("")
 
-  const currentDate = new Date() 
-  const currentMonth = currentDate.getMonth()
-  const currentYear = currentDate.getFullYear()
+  const handleValidation = (month: string, year: number) => {
+    const [isDateValid, dateValidationMessage] = handleDateValidation(month, year)
 
-  const handleValidation = ({ month = selectedMonth, year = selectedYear}) => {
-    if (currentYear === year && currentMonth > months.indexOf(month)) {
-      setIsValid(false)
-      setValidationMessage("please select date in the future")
-    } else {
-      setIsValid(true)
-      setValidationMessage("")
-    }
+    setIsValid(isDateValid)
+    setValidationMessage(dateValidationMessage)
   }
 
   const handleMonthChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedMonth(e.target.value)
-    handleValidation({ month: e.target.value})
+    handleValidation( e.target.value, selectedYear)
   }
   
   const handleYearChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedYear(Number(e.target.value))
-    handleValidation({ year: Number(e.target.value)})
+    handleValidation(selectedMonth, Number(e.target.value))
   }
 
   return (
